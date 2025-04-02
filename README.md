@@ -7,6 +7,7 @@ There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_st
 Field risk_fund_strategies_info_draft.adjusted_nav is the nav of a fund.
 Field risk_fund_strategies_info_draft.gross_leverage_ratio is the glr of a fund.
 Field rcu_info_draft.name is the name of the fund with id rcus.id.
+Field rcu_lable.Lables is the fund type of the fund with id rcus.id, inclduing 套利策略(arbitrage, or Agile Arbitrage),Discretionary Trading(主观交易策略),CTA(CTA 趋势策略),Hybrid Strategy(混合型策略)
 using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public.
 
 ***2. 基金常见业绩表现和风险监控指标(Strategy Performance & Risk Metrics)***
