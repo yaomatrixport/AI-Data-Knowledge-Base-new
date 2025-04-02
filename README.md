@@ -11,7 +11,7 @@ mainly used to understand the data table structure and application scenarios rel
 - using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public. 
 
 ***2. 基金常见业绩表现和风险监控指标(Strategy Performance & Risk Metrics)***
-下述指标基于utc+0 0点/8点的daily nav 计算
+下述指标基于utc+0 0点的daily nav 计算
 **Return**
 - Return Since inception = NAV T / NAV 1  - 1 
 - Return Over 7days/1M/3M/6M/1Y = NAV_T / NAV_T-X  - 1
