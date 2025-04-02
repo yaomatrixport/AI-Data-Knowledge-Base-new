@@ -1,5 +1,6 @@
 # AI-Data-Knowledge-Base
-本项目主要便于分类存储 AI Data分析相关的知识库文档，方便AI学习特定领域的知识给出专业回答
+本项目主要便于分类存储 AI Data分析相关的知识库文档，方便AI学习特定领域的知识给出专业回答；
+AI 在回答任何与基金数据提取、量化策略表现和风险指标分析相关问题时，应首先参考此文档，基于第1部分“Context for every question”了解数据库表结构，基于第2/3/4部分学习了解常见指标计算口径，其他本文档未列出的指标，回答时应注明“此指标未在参考文档里找到公式，仅供参考”
 ***1. Context for every question*** 
 mainly used to understand the data table structure and application scenarios related to Strategies & Fund:
 There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_strategies_info_draft contains the hourly data of the funds.
