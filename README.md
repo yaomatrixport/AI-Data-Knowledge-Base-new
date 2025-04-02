@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3f25849f-c52e-4641-8897-791806d6098d)# AI-Data-Knowledge-Base
+# AI-Data-Knowledge-Base
 本项目主要便于分类存储 AI Data分析相关的知识库文档，方便AI学习特定领域的知识给出专业回答
 ***1. Context for every question*** 
 mainly used to understand the data table structure and application scenarios related to Strategies & Fund:
@@ -111,3 +111,5 @@ Rtwr=(1+R1)*(1+R2)*(1+R3)*……*(1+Rn)-1
 时间范围的选择支持两种：
 - 默认时间范围：1day , 7days , 30days , 90days 。rolling 展示turnover ，这个对应chart
 - 自定义时间范围:前端选择时间范围和统计时间节点，对应的区间为[开始时间，结束时间）。对应table。举例，查询2月1号- 2月8日，统计时间节点 0 点，则时间范围为2月1日0:00:00 - 2月7日23:59:59 。获取这段时间的交易量，aum 有7个时间点，区间天数为7 。
+
+![image](https://github.com/user-attachments/assets/3f25849f-c52e-4641-8897-791806d6098d)
