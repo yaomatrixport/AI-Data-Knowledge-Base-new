@@ -30,7 +30,7 @@ using lable_list in risk_fund_strategies_info_draft to determining whether a str
 **Sharpe Ratio**
   - Sharpe Ratio = [avg(last T of DLR) * 365 - Rf ] /  [stdev(last T of DLR) * sqrt(365)]  
   - 标准公式为sharpe ratio = E(Ra-Rf)/ σ
-  - Rf:risk free rate 由前端控制输入，为年化收益，因此需要将分子E(Ra) ,分母σ 均处理为年化。
+  - Rf:risk free rate 为年化收益，因此需要将分子E(Ra) ,分母σ 均处理为年化。如未特殊说明，Rf = 0；如强调需要考虑无风险利率，可以需要询问客户参考值。
   - E(Ra) = avg(last T of DLR) * 365
   - σ 年化即为上述volatility提到的年化后的 σ_T
   - time period(T) ：since inception；7days; 30days ; 90days；1 year
