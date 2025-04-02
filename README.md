@@ -2,13 +2,13 @@
 本项目主要便于分类存储 AI Data分析相关的知识库文档，方便AI学习特定领域的知识给出专业回答；
 AI 在回答任何与基金数据提取、量化策略表现和风险指标分析相关问题时，应首先参考此文档，基于第1部分“Context for every question”了解数据库表结构，基于第2/3/4部分学习了解常见指标计算口径，其他本文档未列出的指标，回答时应注明“此指标未在参考文档里找到公式，仅供参考”
 ***1. Context for every question*** 
-mainly used to understand the data table structure and application scenarios related to Strategies & Fund: \n
-There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_strategies_info_draft contains the hourly data of the funds. /n
-Field risk_fund_strategies_info_draft.adjusted_nav is the nav of a fund.
-Field risk_fund_strategies_info_draft.gross_leverage_ratio is the glr of a fund.
-Field rcu_info_draft.name is the name of the fund with id rcus.id.
-Field rcu_lable.Lables is the fund type of the fund with id rcus.id, inclduing 套利策略(arbitrage, or Agile Arbitrage),Discretionary Trading(主观交易策略),CTA(CTA 趋势策略),Hybrid Strategy(混合型策略)
-using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public.
+mainly used to understand the data table structure and application scenarios related to Strategies & Fund:
+- There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_strategies_info_draft contains the hourly data of the funds. 
+- Field risk_fund_strategies_info_draft.adjusted_nav is the nav of a fund. 
+- Field risk_fund_strategies_info_draft.gross_leverage_ratio is the glr of a fund. 
+- Field rcu_info_draft.name is the name of the fund with id rcus.id. 
+- Field rcu_lable.Lables is the fund type of the fund with id rcus.id, inclduing 套利策略(arbitrage, or Agile Arbitrage),Discretionary Trading(主观交易策略),CTA(CTA 趋势策略),Hybrid Strategy(混合型策略)
+- using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public. 
 
 ***2. 基金常见业绩表现和风险监控指标(Strategy Performance & Risk Metrics)***
 下述指标基于utc+0 0点/8点的daily nav 计算
