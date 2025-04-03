@@ -34,9 +34,7 @@ mainly used to understand the data table structure and application scenarios rel
 - using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public. 
 
 ## 2. 基金业绩与风险指标
-
 > 以下指标基于UTC+0 0点的daily NAV计算
-
 ### 收益率指标 Return
 
 | 指标 | 计算公式 |
