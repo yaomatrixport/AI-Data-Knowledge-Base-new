@@ -17,6 +17,7 @@
   - `rcu_lable` 包含基金标签等信息
 - **关键字段**:
   - `adjusted_nav`: 基金净值
+  - risk_fund_strategies.`total_asset_value`:基金的AUM，单位是此基金的计价币种。
   - `gross_leverage_ratio`: 基金杠杆率
   - `rcu_info_draft.name`: 对应rcus.id的基金名称
   - `rcu_lable.Lables`: 包含基金类型信息，包括:
