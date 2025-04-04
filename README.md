@@ -12,7 +12,7 @@
 ### 数据库结构
 - **服务器**: mcp服务器用于访问starrocks数据库
 - **主要数据表**:
-  - `riskmgt.risk_fund_strategies_info_draft` 包含基金的小时级数据，通常提取天级别数据时应参考每日UTC 00:00的数据(如有）
+  - `riskmgt.risk_fund_strategies_info_draft` 包含基金的小时级数据，通常提取天级别数据时应参考每日UTC 00:00的数据(如有）；也包含基金的标签信息
   - `rcu_info_draft` 包含基金名称等信息
   - `rcu_lable` 包含基金标签等信息
 - **关键字段**:
@@ -20,12 +20,14 @@
   - risk_fund_strategies.`total_asset_value`:基金的AUM，单位是此基金的计价币种。
   - `gross_leverage_ratio`: 基金杠杆率
   - `rcu_info_draft.name`: 对应rcus.id的基金名称
-  - `rcu_lable.Lables`: 包含基金类型信息，包括:
-  - `lable_list`: 用于判断策略是否为公开策略、具体的策略类型等，主要的基金类型包括：
+  - `rcu_lable`,`lable_list`: 用于判断策略是否为公开策略、具体的策略类型等，主要的基金类型包括：
     - 套利策略(Arbitrage/Agile Arbitrage)
     - 主观交易策略(Discretionary Trading)
     - CTA趋势策略(CTA)
     - 混合型策略(Hybrid Strategy)
+- 查询特定类型的基金/策略时需要关联多表进行查询，比如要查询多空类策略：
+  select rcus.* from rcus, rcu_label, rcu_to_rcu_label where rcus.id = rcu_to_rcu_label.rcu_id and rcu_to_rcu_label.rcu_label_id = rcu_label.id and rcu_label.`name` = "longshort"
+  
 mainly used to understand the data table structure and application scenarios related to Strategies & Fund:
 - There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_strategies_info_draft contains the hourly data of the funds. 
 - Field risk_fund_strategies_info_draft.adjusted_nav is the nav of a fund. 
