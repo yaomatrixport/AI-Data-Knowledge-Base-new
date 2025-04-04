@@ -16,7 +16,7 @@
   - `rcu_info_draft` 包含基金名称等信息
   - `rcu_lable` 包含基金标签等信息
 - **关键字段**:
-  - `adjusted_nav`: 基金净值
+  - `adjusted_nav`: 基金净值，也是考虑各种费用、分润和异常情况下的调整后费前净值，用于还原策略的真实表现和盈利能力。
   - risk_fund_strategies.`total_asset_value`:基金的AUM，单位是此基金的计价币种。
   - `gross_leverage_ratio`: 基金杠杆率
   - `rcu_info_draft.name`: 对应rcus.id的基金名称
@@ -25,16 +25,16 @@
     - 主观交易策略(Discretionary Trading)
     - CTA趋势策略(CTA)
     - 混合型策略(Hybrid Strategy)
+- using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public. 
 - 查询特定类型的基金/策略时需要关联多表进行查询，比如要查询多空类策略：
   select rcus.* from rcus, rcu_label, rcu_to_rcu_label where rcus.id = rcu_to_rcu_label.rcu_id and rcu_to_rcu_label.rcu_label_id = rcu_label.id and rcu_label.`name` = "longshort"
-  
-mainly used to understand the data table structure and application scenarios related to Strategies & Fund:
-- There is a mcp server for accessing the starrocks db. Table riskmgt.risk_fund_strategies_info_draft contains the hourly data of the funds. 
-- Field risk_fund_strategies_info_draft.adjusted_nav is the nav of a fund. 
-- Field risk_fund_strategies_info_draft.gross_leverage_ratio is the glr of a fund. 
-- Field rcu_info_draft.name is the name of the fund with id rcus.id. 
-- Field rcu_lable.Lables is the fund type of the fund with id rcus.id, inclduing 套利策略(arbitrage, or Agile Arbitrage),Discretionary Trading(主观交易策略),CTA(CTA 趋势策略),Hybrid Strategy(混合型策略)
-- using lable_list in risk_fund_strategies_info_draft to determining whether a strategy is public. 
+  **策略类型标签映射表**
+  | 策略类型 | 可能的标签值 | 常见命名模式 |
+  |---------|------------|------------|
+  | 多空策略 | "longshort", "Long Short" | 包含"多空"、"Long Short"、"long-short" |
+  | 套利策略 | "arbitrage", "Arbitrage" | 包含"套利"、"Arbitrage" |
+  | CTA策略 | "CTA", "trend", "cta" | 包含"CTA"、"趋势" |
+  | 做市策略 | "market_making", "mm" | 包含"MM"、"做市"、"Market Making" |
 
 ## 2. 基金业绩与风险指标
 > 以下指标基于UTC+0 0点的daily NAV计算
@@ -170,6 +170,18 @@ mainly used to understand the data table structure and application scenarios rel
 - **默认时间范围**: 1天、7天、30天、90天(滚动展示，对应图表)
 - **自定义时间范围**: 前端选择时间范围和统计时间节点，区间为[开始时间，结束时间)，对应表格
 
+## 4. 常见问题与解决方案
+1. **Q: 无法找到特定标签的策略**
+   A: 尝试多种筛选方式:
+   - 检查标签拼写和大小写
+   - 结合名称关键词筛选
+   - 检查标签格式，如ARRAY_CONTAINS需要使用双引号
+
+2. **Q: 收益率计算结果异常**
+   A: 检查:
+   - 净值数据是否为0或异常值(与前后对比偏差超过30%的值)
+   - 时间区间是否有完整数据
+   - 考虑使用阈值筛选异常结果(如±50%以上的短期收益)
 ---
 
 *注意: 本文档未列出的指标，AI在回答时应注明"此指标未在参考文档里找到公式，仅供参考"*
